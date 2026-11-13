@@ -1,0 +1,65 @@
+@Orders.Api_HostAddress = http://localhost:5193
+
+### Get all orders
+GET {{Orders.Api_HostAddress}}/api/order
+Accept: application/json
+
+### Get orders filtered by status
+GET {{Orders.Api_HostAddress}}/api/order?status=InTransit
+Accept: application/json
+
+### Get a single order
+GET {{Orders.Api_HostAddress}}/api/order/1
+Accept: application/json
+
+### Create an order
+POST {{Orders.Api_HostAddress}}/api/order
+Content-Type: application/json
+
+{
+  "orderNumber": "ORD-HTTP-0001",
+  "customerId": 1,
+  "vehicleId": null,
+  "originCity": "Monterrey",
+  "destinationCity": "Puebla",
+  "cargoDescription": "Carga de prueba",
+  "weightKg": 1000,
+  "freightAmount": 5000,
+  "currencyCode": "MXN",
+  "status": "Created",
+  "pickupDate": "2026-11-15",
+  "deliveryDate": null,
+  "notes": "Prueba desde el archivo HTTP"
+}
+
+### Get finished orders
+GET {{Orders.Api_HostAddress}}/api/order/terminadas
+Accept: application/json
+
+### Get total orders
+GET {{Orders.Api_HostAddress}}/api/order/total
+Accept: application/json
+
+### Update an order
+PUT {{Orders.Api_HostAddress}}/api/order/actualizar/1
+Content-Type: application/json
+
+{
+  "orderNumber": "ORD-2026-0001",
+  "customerId": 1,
+  "vehicleId": 2,
+  "originCity": "Monterrey",
+  "destinationCity": "Ciudad de México",
+  "cargoDescription": "Bobinas de acero actualizadas",
+  "weightKg": 18500,
+  "freightAmount": 49000,
+  "currencyCode": "MXN",
+  "status": "InTransit",
+  "pickupDate": "2026-11-03",
+  "deliveryDate": null,
+  "notes": "Actualización de prueba"
+}
+
+### Delete an order
+DELETE {{Orders.Api_HostAddress}}/api/order/1
+Accept: application/json
